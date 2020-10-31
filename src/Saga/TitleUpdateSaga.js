@@ -1,4 +1,4 @@
-import * as actions from "../Redux/actionTypes/actionsTypes";
+import * as actions from "../Redux/actionTypes/actionTypes";
 import {
   UpdatePollTitleSuccess,
   UpdatePollTitleError,
@@ -13,7 +13,7 @@ export function* UpdateTitleSaga(action) {
   
   let response = yield call(
     axios.get,
-    `https://secure-refuge-14993.herokuapp.com/update_poll_title?id=${id}&title=${title}`
+    `${process.env.REACT_APP_BASE_URL}update_poll_title?id=${id}&title=${title}`
   );
   let data = response.data;
 

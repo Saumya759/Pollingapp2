@@ -1,4 +1,4 @@
-import * as actions from "../actionTypes/actionsTypes";
+import * as actions from "../actionTypes/actionTypes";
 const initialstate = {
   isLoading: false,
   isLogin: false,

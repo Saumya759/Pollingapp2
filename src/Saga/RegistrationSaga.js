@@ -1,5 +1,5 @@
 import { takeLatest, put, call } from "redux-saga/effects";
-import * as actions from "../Redux/actionTypes/actionsTypes";
+import * as actions from "../Redux/actionTypes/actionTypes";
 
 import {
   RegistrationSuccess,

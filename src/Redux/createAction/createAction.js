@@ -1,5 +1,5 @@
 import { createAction } from "redux-actions";
-import * as actions from "../actionTypes/actionsTypes";
+import * as actions from "../actionTypes/actionTypes";
 
 export const RegistrationRequest = createAction(actions.Registation_Request);
 export const RegistrationSuccess = createAction(actions.Registation_Success);

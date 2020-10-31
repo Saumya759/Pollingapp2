@@ -1,23 +1,25 @@
 import * as actions from "../actionTypes/actionTypes";
 
-let initialState = {
+const initialState = {
   isLoading: false,
 };
 
-const AddNewOptionreducer = (state = initialState, action) => {
+const UpdateTitlereducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.AddNew_OptionRequest:
+    case actions.Update_PollTitleRequest:
       return {
         ...state,
         isLoading: true,
       };
-    case actions.AddNew_OptionSuccess:
+
+    case actions.Update_PollTitleSuccess:
       return {
         ...state,
         isLoading: false,
         response: action.payload.response,
       };
-    case actions.AddNew_OptionError:
+
+    case actions.Update_PollTitleError:
       return {
         ...state,
         isLoading: false,
@@ -27,4 +29,5 @@ const AddNewOptionreducer = (state = initialState, action) => {
       return state;
   }
 };
-export default AddNewOptionreducer;
+
+export default UpdateTitlereducer;

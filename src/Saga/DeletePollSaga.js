@@ -1,4 +1,4 @@
-import * as actions from "../Redux/actionTypes/actionsTypes";
+import * as actions from "../Redux/actionTypes/actionTypes";
 import {
   DeletePollSuccess,
   DeletePollError,

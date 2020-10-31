@@ -1,7 +1,7 @@
 import { takeLatest, put, call } from "redux-saga/effects";
 
 import { LoginSuccess, LoginError } from "../Redux/createAction/createAction";
-import * as actions from "../Redux/actionTypes/actionsTypes";
+import * as actions from "../Redux/actionTypes/actionTypes";
 import axios from "axios";
 import jwt from "jsonwebtoken";
 
