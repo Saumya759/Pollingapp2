@@ -22,14 +22,14 @@ const Login = () => {
         setPassword("");
     };
     useEffect(() => {
-        if (state.isLogin && localStorage.getItem("token")) {
-            if (state.response.role.toLowerCase() === "admin") {
+        if (localStorage.getItem("token")) {
+            if (state?.response?.role.toLowerCase() === "admin") {
                 history.push("/admindashboard");
                 localStorage.setItem("userType", state.response.role);
-            }   else if(state.response.role.toLowerCase() === "guest"){
+            }   else if(state?.response?.role.toLowerCase() === "guest"){
                 history.push("/pollpage");
                 localStorage.setItem("userType", state.response.role);
-            } 
+            }
             else {
                 localStorage.clear();
                 history.push("/");

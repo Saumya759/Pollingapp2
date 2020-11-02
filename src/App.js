@@ -15,7 +15,7 @@ const App = ()=>{
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Login} >{
-          localStorage.getItem("token") ? <Login /> : <Redirect to="/login" />
+          localStorage.getItem("token") ? <Dashboard /> : <Redirect to="/login" />
         }</Route>
         <Route exact path="/login" component={Login} />
         <Route path="/registration" component={Registration} />
