@@ -62,7 +62,7 @@ const GuestDashboard = () => {
 
     const refreshPage = () =>{
         window.location.reload(false);
-        //localStorage.setItem(item.id,""); 
+        
     }
     return (
         <div>
@@ -96,7 +96,7 @@ const GuestDashboard = () => {
                                         <input
                                             type="radio"
                                             name={item.id}
-                                            // disabled={localStorage.getItem(item.id) ? true : false}
+                                           
                                             onChange={() => {
                                                 handlePoll(item.id, option.option);
                                             }}

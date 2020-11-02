@@ -93,7 +93,7 @@ const AddPoll = () => {
                       onClick={() => {
                         handleRemoveOption(i);
                       }}
-                      variant="danger"
+                      variant="warning"
                     >
                       Delete
                 </Button>

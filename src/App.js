@@ -10,12 +10,12 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 
 
-function App() {
+const App = ()=>{
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Login} >{
-          localStorage.getItem("token") ? <Dashboard /> : <Redirect to="/login" />
+          localStorage.getItem("token") ? <Login /> : <Redirect to="/login" />
         }</Route>
         <Route exact path="/login" component={Login} />
         <Route path="/registration" component={Registration} />
