@@ -6,13 +6,13 @@ import AddPoll from './Components/AddPoll/AddPoll';
 import EditPoll from './Components/EditPoll/EditPoll';
 import GuestDashboar from './Components/GuestDashboard/GuestDashboard';
 import PrivateRouting from './PrivateRouting';
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 
 
 const App = ()=>{
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <Route exact path="/" component={Login} >{
           localStorage.getItem("token") ? <Dashboard /> : <Redirect to="/login" />
@@ -24,7 +24,7 @@ const App = ()=>{
         <PrivateRouting path="/editpoll/:id"component={EditPoll}/>
         <Route path="/pollpage"component={GuestDashboar}/>
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
