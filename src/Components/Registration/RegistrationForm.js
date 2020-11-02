@@ -30,13 +30,13 @@ const Registration = () => {
         <div>
             <Navbar bg="dark" variant="dark">
                 <Link to="/">
-                    <Navbar.Brand>Poll Management System</Navbar.Brand>
+                    <Navbar.Brand>Polling System</Navbar.Brand>
                 </Link>
                 <Nav className="mr-auto">
 
                 </Nav>
                 <Link to="/">
-                    <Button className="float-right" variant="success">
+                    <Button className="float-right" variant="info">
                         Sign In
                     </Button>
                 </Link>
@@ -89,7 +89,7 @@ const Registration = () => {
                                     aria-hidden="true"
                                 />
                             ) : null}
-                            {regisstatus.isLoading === true ? null : <span>Register Now!</span>}
+                            {regisstatus.isLoading === true ? null : <span>Register</span>}
                         </Button>
                         <div className="message">
                             {regisstatus.error && regisstatus.error.error && !regisstatus.isRegistered ? (

@@ -26,4 +26,3 @@ const UpdateTitle = (props) => {
   );
 };
 export default UpdateTitle;
-//onClick={handleClose}

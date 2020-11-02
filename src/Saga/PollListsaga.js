@@ -9,7 +9,7 @@ export function* Listsaga(action) {
   try {
     let response = yield call(
       axios.get,
-      "${process.env.REACT_APP_BASE_URL}list_polls"
+      `${process.env.REACT_APP_BASE_URL}list_polls`
     );
 
     if (response) {

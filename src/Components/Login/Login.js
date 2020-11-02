@@ -40,13 +40,13 @@ const Login = () => {
     return (
         <div>
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="#home">Poll Management System</Navbar.Brand>
+                <Navbar.Brand href="#home">Polling System</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href="#home">Home</Nav.Link>
                     <Nav.Link href="#features">Features</Nav.Link>
                 </Nav>
                 <Link to="/registration">
-                    <Button className="float-right" variant="success">
+                    <Button className="float-right" variant="info">
                         SignUp
                     </Button>
                 </Link>
@@ -62,7 +62,7 @@ const Login = () => {
                             onChange={(e) => setUsername(e.target.value)}
                         />
                         <Form.Text className="text-muted">
-                            We'll never share your username with anyone else.
+                            We'll never share your username
                     </Form.Text>
                     </Form.Group>
 
@@ -75,7 +75,7 @@ const Login = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button type="Submit" variant="dark" size="lg" block
+                    <Button type="Submit" variant="primary" size="lg" block
                         disabled={username && password ? false : true}
                         onClick={handleSubmit}>
                         {state.isLoading ? (
