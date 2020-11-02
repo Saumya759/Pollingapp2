@@ -25,7 +25,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(ListPollRequest());
-  });
+  },[]);
   const pollList = useSelector((state) => {
     return state.PollListstatus.poll;
   });
