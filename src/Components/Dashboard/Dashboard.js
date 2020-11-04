@@ -7,25 +7,23 @@ import {
   Nav,
   Jumbotron,
   Container,
-  show
+  show,
 } from "react-bootstrap";
 
 import { ListPollRequest } from "../../Redux/createAction/createAction";
 import { useDispatch, useSelector } from "react-redux";
-import Alerte from "../Alert/Alert";
+// import Alerte from "../Alert/Alert";
 import { Link, Redirect, useHistory } from "react-router-dom";
-
 
 const Dashboard = () => {
   const [latestPoll, setlatestPoll] = useState([]);
   const dispatch = useDispatch();
   const history = useHistory();
   const [show, setShow] = useState(false);
-  
 
   useEffect(() => {
     dispatch(ListPollRequest());
-  },[]);
+  }, []);
   const pollList = useSelector((state) => {
     return state.PollListstatus.poll;
   });
@@ -35,8 +33,17 @@ const Dashboard = () => {
 
   useEffect(() => {
     setlatestPoll(pollList);
-   
-  });
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      if (localStorage.getItem("userType") === "Guest")
+        history.push("/guestdashboard");
+    } else {
+      localStorage.clear();
+      history.push("/");
+    }
+  }, [localStorage.getItem("userType")]);
 
   const poll = [...latestPoll];
 
@@ -45,16 +52,14 @@ const Dashboard = () => {
   };
 
   const handleLogout = () => {
-      console.log( localStorage.clear())
-    // localStorage.clear();
+    console.log(localStorage.clear());
+
     history.push("/login");
   };
 
-  const AlertDismissible = () => {
-    setShow(!show)
-  };
-
- 
+  // const AlertDismissible = () => {
+  //   setShow(!show);
+  // };
 
   return (
     <div>
@@ -75,7 +80,7 @@ const Dashboard = () => {
         </Button>
       </Navbar>
       <Jumbotron>
-      <Alerte AlertDismissible = {AlertDismissible} show={show} />
+        {/* <Alerte AlertDismissible={AlertDismissible} show={show} /> */}
         <Container>
           {pollstatus === false ? (
             <center>
@@ -89,20 +94,24 @@ const Dashboard = () => {
                   <Card.Title>Title :{item.title}</Card.Title>
                   {item.options.map((option, i) => (
                     <div key={i}>
-                      <input type="radio" onClick={AlertDismissible} name={item._id} />
+                      <input
+                        type="radio"
+                        // onClick={AlertDismissible}
+                        name={item._id}
+                      />
                       <label>{option.option}</label>
                       <label className="float-right">Votes:{option.vote}</label>
                     </div>
                   ))}
                 </div>
-                
+
                 <hr />
                 <Button
                   variant="warning"
                   onClick={() => handleEditPoll(item._id)}
                 >
                   Edit Poll
-                </Button> <Button variant="danger" onClick={handleLogout} >Cancel</Button> 
+                </Button>
               </Card.Body>
             </Card>
           ))}

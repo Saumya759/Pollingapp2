@@ -104,6 +104,7 @@ const AddPoll = () => {
           ))}
           <div>
             {title ? (
+                 options[options.length-1]===""?null:
               <Button onClick={handleAddOption} variant="primary">
                 Add Option
               </Button>
@@ -113,6 +114,7 @@ const AddPoll = () => {
                   Submit Poll
                 </Button>
               ) : null}
+             
           </div>
         </Container>
       </Jumbotron>

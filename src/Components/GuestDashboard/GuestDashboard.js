@@ -12,10 +12,13 @@ const GuestDashboard = () => {
     const dispatch = useDispatch();
     const dispatch1 = useDispatch();
     const history = useHistory();
+    const [next, setNext] = useState(false);
+    const [selectedOptionId, setselectedOptionId]  = useState(null)
 
     useEffect(() => {
         dispatch(ListPollRequest());
     });
+    console.log(selectedOptionId,"DDDDDDD")
 
     const pollList = useSelector((state) => {
         return state.PollListstatus.poll;
@@ -35,7 +38,9 @@ const GuestDashboard = () => {
             option: option,
             token: usertoken,
         };
+        console.log(id,"WWWWWWWW")
         localStorage.setItem(id, option);
+        setselectedOptionId(id);
         dispatch1(PollRequest(Poll));
     };
 
@@ -45,7 +50,7 @@ const GuestDashboard = () => {
     };
     useEffect(() => {
         var item = poll[Math.floor(Math.random() * poll.length)];
-
+console.log(item,"FFFFFFFFF")
         if (item) {
             console.log(item.id)
             setitem(item)
@@ -87,18 +92,20 @@ const GuestDashboard = () => {
                     ) : null}
 
                     {item &&
-                        (<Card key={item.id} className="Card" >
-                            <div className="Card1" onClick={() => handledoublePollClick(item.id)}>
+                        (<Card key={item._id} className="Card" >
+                            <div className="Card1" onClick={() => handledoublePollClick(item._id)}>
                                 <Card.Title>Title :{item.title}</Card.Title>
                                 <Container>
                                 {item.options.map((option, i) => (
                                     <div key={i} >
-                                        <input
-                                            type="radio"
-                                            name={item.id}
+                                        {console.log(item.id,"RRRRR",option.option)}
+                                        <input type="radio" 
+                                            name={item._id}
+                                            disabled= {selectedOptionId&& true}
                                            
                                             onChange={() => {
-                                                handlePoll(item.id, option.option);
+                                                handlePoll(item._id, option.option);
+                                                setNext(true);
                                             }}
                                         />
                                         <label>{option.option}</label>
@@ -106,10 +113,11 @@ const GuestDashboard = () => {
                                     </div>
                                 ))}
                                 </Container>
-                            </div>
-                            <Button variant="primary" onClick={refreshPage}>Next</Button>
-                        </Card>)
-                    }
+                               </div>.
+                                {!next?null:                                
+                                <Button variant="primary" onClick={refreshPage}>Next</Button>}
+                            </Card>
+                        )}
                 </Container>
             </Jumbotron>
 

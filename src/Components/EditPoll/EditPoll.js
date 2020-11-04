@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Badge, Navbar, Nav, Container, Jumbotron, Spinner } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Badge,
+  Navbar,
+  Nav,
+  Container,
+  Jumbotron,
+  Spinner,
+} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import {
@@ -13,9 +22,9 @@ import DeletePoll from "../EditPoll/DeletePoll";
 import DeleteOption from "../EditPoll/DeleteOption";
 import AddNewOption from "../EditPoll/AddNewOption";
 import UpdateTitle from "../EditPoll/UpdatePollTitle";
+import AddPoll from "../AddPoll/AddPoll";
 const EditPoll = (props) => {
-
-  const [poll, setpoll] = useState([])
+  const [poll, setpoll] = useState([]);
   const [Title, setTitle] = useState("");
   const [id, setid] = useState("");
   const [showTitleUpdate, setshowTitleUpdate] = useState(false);
@@ -35,15 +44,15 @@ const EditPoll = (props) => {
   });
 
   useEffect(() => {
-    setpoll(pollList)
-  }, [pollList])
+    setpoll(pollList);
+  }, [pollList]);
 
-  const pollid = props.match.params.id
+  const pollid = props.match.params.id;
 
-  const polltoedit = pollList.filter(item => item._id == pollid)
+  const polltoedit = pollList.filter((item) => item._id == pollid);
   useEffect(() => {
-    setpoll(polltoedit)
-  }, [pollList])
+    setpoll(polltoedit);
+  }, [pollList]);
 
   const _handleshowTitle = (title, id) => {
     setshowTitleUpdate(true);
@@ -65,8 +74,7 @@ const EditPoll = (props) => {
       setshowTitleUpdate(false);
       setTitle("");
       setid("");
-    }
-    else {
+    } else {
       setshowTitleUpdate(false);
       setTitle("");
       setid("");
@@ -130,8 +138,7 @@ const EditPoll = (props) => {
       setid("");
       setTitle("");
       setshowAddNewOption(false);
-    }
-    else {
+    } else {
       setid("");
       setTitle("");
       setshowAddNewOption(false);
@@ -154,8 +161,9 @@ const EditPoll = (props) => {
 
   const handleLogout = () => {
     localStorage.clear();
-    history.push("/login")
+    history.push("/login");
   };
+  
 
   const state_update = useSelector((state) => {
     return state.UpdateTitlestatus;
@@ -175,100 +183,116 @@ const EditPoll = (props) => {
     <div>
       <Navbar bg="dark" variant="dark">
         <Link to="/">
-          <Navbar.Brand>
-            Add Poll
-          </Navbar.Brand>
+          <Navbar.Brand>Add Poll</Navbar.Brand>
         </Link>
         <Nav className="mr-auto"></Nav>
         <Link to="/admindashboard">
-          <Button variant="success">
-            Dashboard
-          </Button>
+          <Button variant="success">Dashboard</Button>
         </Link>
         <span>-</span>
         <Button variant="danger" onClick={handleLogout}>
           Logout
-          </Button>
+        </Button>
       </Navbar>
       <Jumbotron>
         <Container>
-          {
-            poll.map((item) =>
-              <Card key={item._id} className="Card">
-                <Card.Body >
-                  {state_update.isLoading === true ? (
-                    <center>
-                      <Spinner className="spinner" animation="border" variant="primary" />
-                    </center>
-                  ) : null}
-                  {state_delPoll.isLoading === true ? (
-                    <center>
-                      <Spinner className="spinner" animation="border" variant="primary" />
-                    </center>
-                  ) : null}
-                  {state_delOption.isLoading === true ? (
-                    <center>
-                      <Spinner className="spinner" animation="border" variant="primary" />
-                    </center>
-                  ) : null}
-                  {state_addOption.isLoading === true ? (
-                    <center>
-                      <Spinner className="spinner" animation="border" variant="primary" />
-                    </center>
-                  ) : null}
-                  <div className="Card1">
-                    <Card.Title>Title :{item.title}</Card.Title>
-                    {item.options.map((option, i) => (
-                      <div key={i}>
-                        <input type="radio" name={item._id} />
-                        <label>{option.option}</label>
-                        <div className="d-flex justify-content-end">
-                          <label>
-                            <Badge variant="light">{item.__v}</Badge>
-                          </label>
-                          <Button
-                            size={"sm"}
-                            onClick={() =>
-                              _handleOptionDelete(option.option, item._id)
-                            }
-                            className="ml-5"
-                            variant="danger"
-                          >
-                            Delete
-                      </Button>
-                        </div>
+          {poll.map((item) => (
+            <Card key={item._id} className="Card">
+              <Card.Body>
+                {state_update.isLoading === true ? (
+                  <center>
+                    <Spinner
+                      className="spinner"
+                      animation="border"
+                      variant="primary"
+                    />
+                  </center>
+                ) : null}
+                {state_delPoll.isLoading === true ? (
+                  <center>
+                    <Spinner
+                      className="spinner"
+                      animation="border"
+                      variant="primary"
+                    />
+                  </center>
+                ) : null}
+                {state_delOption.isLoading === true ? (
+                  <center>
+                    <Spinner
+                      className="spinner"
+                      animation="border"
+                      variant="primary"
+                    />
+                  </center>
+                ) : null}
+                {state_addOption.isLoading === true ? (
+                  <center>
+                    <Spinner
+                      className="spinner"
+                      animation="border"
+                      variant="primary"
+                    />
+                  </center>
+                ) : null}
+                <div className="Card1">
+                  <Card.Title>Title :{item.title}</Card.Title>
+                  {item.options.map((option, i) => (
+                    <div key={i}>
+                      <input type="radio" name={item._id} />
+                      <label>{option.option}</label>
+                      <div className="d-flex justify-content-end">
+                        <label>
+                          <Badge variant="light">{item.__v}</Badge>
+                        </label>
+                        <Button
+                          size={"sm"}
+                          onClick={() =>
+                            _handleOptionDelete(option.option, item._id)
+                          }
+                          className="ml-5"
+                          variant="danger"
+                        >
+                          Delete
+                        </Button>
                       </div>
-                    ))}
-                  </div>
-                  <Button
-                    variant="warning"
-                    onClick={() => {
-                      _handleshowTitle(item.title, item._id);
-                    }}
-                  >
-                    Update Title
-              </Button>
-                  <Button
-                    className="ml-2"
-                    variant="danger"
-                    onClick={() => {
-                      _handleDeletePoll(item.title, item._id);
-                    }}
-                  >
-                    Delete Poll
-              </Button>
-                  <Button
-                    onClick={() => {
-                      _handleAddNewOption(item._id);
-                    }}
-                    className="ml-2"
-                    variant="primary"
-                  >
-                    Add Option
-            </Button>
-                </Card.Body>
-              </Card>)
-          }
+                    </div>
+                  ))}
+                </div>
+                <Button
+                  variant="warning"
+                  onClick={() => {
+                    _handleshowTitle(item.title, item._id);
+                  }}
+                >
+                  Update Title
+                </Button>
+                <Button
+                  className="ml-2"
+                  variant="danger"
+                  onClick={() => {
+                    _handleDeletePoll(item.title, item._id);
+                  }}
+                >
+                  Delete Poll
+                </Button>
+                <Button
+                  onClick={() => {
+                    _handleAddNewOption(item._id);
+                  }}
+                  className="ml-2"
+                  variant="primary"
+                >
+                  Add Option
+                </Button>
+                <Link to="/admindashboard">
+                <Button variant="info">
+                  Cancel
+                </Button>
+                </Link>
+              </Card.Body>
+            </Card>
+          ))}
           <UpdateTitle
             show={showTitleUpdate}
             onCloseModel={() => _handlecloseModel()}
@@ -311,6 +335,6 @@ const EditPoll = (props) => {
       </Jumbotron>
     </div>
   );
-}
+};
 
 export default EditPoll;

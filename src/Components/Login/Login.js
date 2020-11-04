@@ -59,7 +59,7 @@ const Login = () => {
                             type="text"
                             placeholder="Enter Username"
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => setUsername(e.target.value)} autocomplete="off"
                         />
                         <Form.Text className="text-muted">
                             We'll never share your username
@@ -72,7 +72,7 @@ const Login = () => {
                             type="password"
                             placeholder="Password"
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={(e) => setPassword(e.target.value)} autocomplete="off"
                         />
                     </Form.Group>
                     <Button type="Submit" variant="primary" size="lg" block
