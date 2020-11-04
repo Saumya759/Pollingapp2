@@ -33,7 +33,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     setlatestPoll(pollList);
-  }, []);
+  });
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -57,10 +57,6 @@ const Dashboard = () => {
     history.push("/login");
   };
 
-  // const AlertDismissible = () => {
-  //   setShow(!show);
-  // };
-
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -80,7 +76,6 @@ const Dashboard = () => {
         </Button>
       </Navbar>
       <Jumbotron>
-        {/* <Alerte AlertDismissible={AlertDismissible} show={show} /> */}
         <Container>
           {pollstatus === false ? (
             <center>
@@ -94,11 +89,7 @@ const Dashboard = () => {
                   <Card.Title>Title :{item.title}</Card.Title>
                   {item.options.map((option, i) => (
                     <div key={i}>
-                      <input
-                        type="radio"
-                        // onClick={AlertDismissible}
-                        name={item._id}
-                      />
+                      <input type="radio" name={item._id} />
                       <label>{option.option}</label>
                       <label className="float-right">Votes:{option.vote}</label>
                     </div>
