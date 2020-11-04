@@ -56,7 +56,7 @@ const GuestDashboard = () => {
 
   const handleLogout = () => {
     localStorage.clear();
-    history.push("/login");
+    history.push("/");
   };
   useEffect(() => {
     var item = poll[Math.floor(Math.random() * poll.length)];
