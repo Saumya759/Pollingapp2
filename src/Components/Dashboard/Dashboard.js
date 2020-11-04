@@ -43,7 +43,7 @@ const Dashboard = () => {
   const handleLogout = () => {
     console.log(localStorage.clear());
 
-    history.push("/login");
+    history.push("/");
   };
 
   return (

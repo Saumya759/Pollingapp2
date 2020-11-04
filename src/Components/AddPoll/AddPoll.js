@@ -43,7 +43,7 @@ const AddPoll = () => {
   };
   const handleLogout = () => {
     localStorage.clear();
-    history.push("/login")
+    history.push("/")
   }
   if (state.isLoading === true) {
     return <Redirect to="/admindashboard" />;

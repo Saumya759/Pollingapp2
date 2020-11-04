@@ -13,7 +13,8 @@ const Login = () => {
     return state.Loginstatus;
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+      e.preventDefault();
     let loginData = {
       username: username.trim(),
       password: password.trim(),

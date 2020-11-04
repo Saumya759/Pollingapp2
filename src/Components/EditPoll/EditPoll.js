@@ -161,7 +161,7 @@ const EditPoll = (props) => {
 
   const handleLogout = () => {
     localStorage.clear();
-    history.push("/login");
+    history.push("/");
   };
   
 

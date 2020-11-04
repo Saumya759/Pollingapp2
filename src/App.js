@@ -6,7 +6,7 @@ import AddPoll from './Components/AddPoll/AddPoll';
 import EditPoll from './Components/EditPoll/EditPoll';
 import GuestDashboar from './Components/GuestDashboard/GuestDashboard';
 import PrivateRouting from './PrivateRouting';
-import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 
 
@@ -15,9 +15,9 @@ const App = ()=>{
     <HashRouter>
       <Switch>
         <Route exact path="/" component={Login} >{
-          localStorage.getItem("token") ? <Dashboard /> : <Redirect to="/login" />
+          // localStorage.getItem("token") ? <Dashboard /> : <Redirect to="/" />
         }</Route>
-        <Route exact path="/login" component={Login} />
+        {/* <Route exact path="/login" component={Login} /> */}
         <Route path="/registration" component={Registration} />
         <PrivateRouting path="/admindashboard" component={Dashboard} />
         <PrivateRouting path="/addpoll" component={AddPoll} />
