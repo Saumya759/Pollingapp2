@@ -7,12 +7,11 @@ import {
   Nav,
   Jumbotron,
   Container,
-  show,
 } from "react-bootstrap";
 
 import { ListPollRequest } from "../../Redux/createAction/createAction";
 import { useDispatch, useSelector } from "react-redux";
-// import Alerte from "../Alert/Alert";
+
 import { Link, Redirect, useHistory } from "react-router-dom";
 
 const Dashboard = () => {
@@ -34,16 +33,6 @@ const Dashboard = () => {
   useEffect(() => {
     setlatestPoll(pollList);
   });
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      if (localStorage.getItem("userType") === "Guest")
-        history.push("/guestdashboard");
-    } else {
-      localStorage.clear();
-      history.push("/");
-    }
-  }, [localStorage.getItem("userType")]);
 
   const poll = [...latestPoll];
 
